@@ -2,7 +2,7 @@
 #include "class2.h"
 using namespace std;
 
-class2::class2(int x = 0):x(x)
+class2::class2(int x):x(x)
 {
     cout << "Class 1 constructor called" << endl;
 }
