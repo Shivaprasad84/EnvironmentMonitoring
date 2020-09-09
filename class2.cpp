@@ -5,6 +5,7 @@ using namespace std;
 class2::class2(int x):x(x)
 {
     cout << "Class 1 constructor called" << endl;
+    cout << "x: " << x << endl;
 }
 
 class2::~class2()
