@@ -18,19 +18,19 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cppcheck
       
     - name: build sender
-      run: g++ -Wall -Wextra -Werror --coverage -o testchecker sender/*.cpp
+      run: g++ -Wall -Wextra -Werror --coverage -o sender/testchecker sender/*.cpp
       
     - name: run sender
       run: ./testchecker
     
     - name: sender coverage report
-      run: gcov -r *.cpp
+      run: gcov -r sender/*.cpp
     
     - name: build receiver
-      run: g++ -Wall -Wextra -Werror --coverage -o testchecker receiver/*.cpp
+      run: g++ -Wall -Wextra -Werror --coverage -o receiver/testchecker receiver/*.cpp
       
     - name: run receiver
       run: ./testchecker
     
     - name: receiver coverage report
-      run: gcov -r *.cpp
+      run: gcov -r receiver/*.cpp
