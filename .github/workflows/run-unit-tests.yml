@@ -21,7 +21,7 @@ jobs:
       run: g++ -Wall -Wextra -Werror --coverage -o sender/testchecker sender/*.cpp
       
     - name: run sender
-      run: ./testchecker
+      run: ./sender/testchecker
     
     - name: sender coverage report
       run: gcov -r sender/*.cpp
@@ -30,7 +30,7 @@ jobs:
       run: g++ -Wall -Wextra -Werror --coverage -o receiver/testchecker receiver/*.cpp
       
     - name: run receiver
-      run: ./testchecker
+      run: ./receiver/testchecker
     
     - name: receiver coverage report
       run: gcov -r receiver/*.cpp
