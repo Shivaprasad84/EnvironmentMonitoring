@@ -14,10 +14,10 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: build sender
-      run: g++ -Wall -Wextra -Werror -o sender-executable sender.cpp
+      run: g++ -Wall -Wextra -Werror -o sender-executable sender.cpp sender/sender.cpp
     
     - name: build receiver
-      run: g++ -Wall -Wextra -Werror -o receiver-executable receiver.cpp 
+      run: g++ -Wall -Wextra -Werror -o receiver-executable receiver.cpp receiver/receiver.cpp
     
     - name: run sensor emulator
       run: ./sender-executable | ./receiver-executable
