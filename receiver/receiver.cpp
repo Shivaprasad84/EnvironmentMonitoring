@@ -1,10 +1,11 @@
 #include <iostream>
-#include <string>
-#include <utility>
+#include "receiver.h"
 using namespace std;
 
-
-int main()
+string recevie_n_analyse(const string& data)
 {
-    cout << "hello world" << endl;
+    string message = "INFO: " + data;
+    cout << message <<  endl;
+    return message;
 }
+

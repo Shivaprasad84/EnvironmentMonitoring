@@ -1,14 +1,23 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
-#include <utility>
+#include "sender.h"
+
 using namespace std;
 
-int main()
+
+vector<string> send_data()
 {
-    vector<pair<string, string>> temp_humidity = {make_pair("25", "30"), make_pair("30", "60")};
-    for(auto i : temp_humidity)
+    ifstream myfile;
+    myfile.open("../TestData/temperature-humidity.csv");
+    vector<string> param_vectors;
+    while(myfile.good()) 
     {
-        std::cout << i.first << ", " << i.second << endl;
+        string line;
+        getline(myfile, line);
+        cout << line << endl;
+        param_vectors.push_back(line);
     }
-    return 0;
+    myfile.close();
+    return param_vectors;
 }
