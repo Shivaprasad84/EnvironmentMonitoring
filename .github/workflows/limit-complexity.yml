@@ -21,7 +21,7 @@ jobs:
       run: pip install lizard
 
     - name: Limit complexity Sender
-      run: $HOME/.local/bin/lizard ./sender/ --CCN 3 -x"./catch.hpp"
+      run: $HOME/.local/bin/lizard ./sender/ --CCN 3 -x"./sender/catch.hpp"
     
     - name: Limit complexity Receiver
-      run: $HOME/.local/bin/lizard ./receiver/ --CCN 3 -x"./catch.hpp"
+      run: $HOME/.local/bin/lizard ./receiver/ --CCN 3 -x"./receiver/catch.hpp"
