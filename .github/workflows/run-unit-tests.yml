@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches: [ master ]
-    paths-ignore: [ docs/* ]
+    paths-ignore: [ docs/*, includes ]
 
 jobs:
   build:
