@@ -1,14 +1,10 @@
 name: Limit complexity
 
 on:
+  pull_request:
   push:
     branches: [ master ]
-    paths-ignore:
-    - 'docs/**'
-  pull_request:
-    branches: [ master ]
-    paths-ignore:
-    - 'docs/**'
+    paths-ignore: [ docs/* ]
 
 jobs:
   build:
@@ -20,8 +16,5 @@ jobs:
     - name: Install lizard
       run: pip install lizard
 
-    - name: Limit complexity Sender
-      run: $HOME/.local/bin/lizard ./sender/ --CCN 3 -x"./sender/catch.hpp"
-    
-    - name: Limit complexity Receiver
-      run: $HOME/.local/bin/lizard ./receiver/ --CCN 3 -x"./receiver/catch.hpp"
+    - name: Limit complexity
+      run: $HOME/.local/bin/lizard --CCN 3 -x"./includes/catch.hpp"

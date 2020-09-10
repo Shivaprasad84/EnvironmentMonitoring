@@ -1,0 +1,42 @@
+name: Build and Run Unit Tests
+
+on:
+  pull_request:
+  push:
+    branches: [ master ]
+    paths-ignore: [ docs/* ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: install cppcheck static analysis
+      run: sudo apt-get update && sudo apt-get install -y cppcheck
+      
+    - name: build sender
+      run: g++ -Wall -Wextra -Werror --coverage -o testchecker sender/*.cpp
+      
+    - name: sender static analysis
+      run: cppcheck --enable=all --error-exitcode=1 ./sender/
+    
+    - name: run sender
+      run: ./testchecker
+    
+    - name: sender coverage report
+      run: gcov -r sender/*.cpp
+    
+    - name: build receiver
+      run: g++ -Wall -Wextra -Werror --coverage -o testchecker receiver/*.cpp
+      
+    - name: receiver static analysis
+      run: cppcheck --enable=all --error-exitcode=1 ./receiver/
+      
+    - name: run receiver
+      run: ./testchecker
+    
+    - name: receiver coverage report
+      run: gcov -r receiver/*.cpp

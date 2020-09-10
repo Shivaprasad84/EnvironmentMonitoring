@@ -1,31 +1,23 @@
-name: Build and Run
+name: Main Workflow
 
 on:
+  pull_request:
   push:
     branches: [ master ]
-    paths-ignore:
-    - 'docs/**'
-  pull_request:
-    branches: [ master ]
-    paths-ignore:
-    - 'docs/**'
+    paths-ignore: [ docs/* ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+
     - name: build sender
-      run: g++ -Wall -Wextra -o testchecker sender/*.cpp
-
-    - name: run sender
-      run: ./testchecker
-
+      run: g++ -Wall -Wextra -Werror -o sender-executable sender.cpp
+    
     - name: build receiver
-      run: g++ -Wall -Wextra -o testchecker receiver/*.cpp
-
-    - name: run receiver
-      run: ./testchecker
-      
+      run: g++ -Wall -Wextra -Werror -o receiver-executable receiver.cpp 
+    
+    - name: run sensor emulator
+      run: ./sender-executable | ./receiver-executable
