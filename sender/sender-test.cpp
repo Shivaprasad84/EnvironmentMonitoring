@@ -11,7 +11,7 @@ TEST_CASE("Test Sender", "[vector]") {
     vector<string> param_vector;
     ifstream myfile;
     myfile.open("../TestData/temperature-humidity.csv");
-    param_vector = send_data();
+    param_vector = send_data("../TestData/temperature-humidity.csv");
     int index = 0;
     while(myfile.good())
     {

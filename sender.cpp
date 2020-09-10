@@ -4,6 +4,6 @@ using namespace std;
 
 int main()
 {
-    send_data();
+    send_data("./TestData/temperature-humidity.csv");
     return 0;
 }

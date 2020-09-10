@@ -6,10 +6,10 @@
 using namespace std;
 
 
-vector<string> send_data()
+vector<string> send_data(const string& path)
 {
     ifstream myfile;
-    myfile.open("../TestData/temperature-humidity.csv");
+    myfile.open(path);
     vector<string> param_vectors;
     while(myfile.good()) 
     {

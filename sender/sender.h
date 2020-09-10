@@ -2,4 +2,4 @@
 #include <vector>
 #include <string>
 
-std::vector<std::string> send_data();
+extern std::vector<std::string> send_data(const std::string& path);
