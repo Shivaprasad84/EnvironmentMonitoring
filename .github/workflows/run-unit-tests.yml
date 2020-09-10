@@ -20,9 +20,6 @@ jobs:
     - name: build sender
       run: g++ -Wall -Wextra -Werror --coverage -o testchecker sender/*.cpp
       
-    - name: sender static analysis
-      run: cppcheck --enable=all --error-exitcode=1 ./sender/
-    
     - name: run sender
       run: ./testchecker
     
@@ -31,9 +28,6 @@ jobs:
     
     - name: build receiver
       run: g++ -Wall -Wextra -Werror --coverage -o testchecker receiver/*.cpp
-      
-    - name: receiver static analysis
-      run: cppcheck --enable=all --error-exitcode=1 ./receiver/
       
     - name: run receiver
       run: ./testchecker
