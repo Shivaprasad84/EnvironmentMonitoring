@@ -1,3 +1,4 @@
 #pragma once
+#include <vector>
 
-vector<string> send_data();
+std::vector<std::string> send_data();

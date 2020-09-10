@@ -1,3 +1,4 @@
 #pragma once
+#include <string>
 
-string recevie_n_analyse(const string& data);
+std::string recevie_n_analyse(const std::string& data);

@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-TEST_CASE("Reads stdin data and displays") {
+TEST_CASE("Reads stdin data and displays", "[string]") {
     string custom_data[] = {"12,45", "35,60", "44,89"};
     for(int i = 0; i < 3; i++)
     {

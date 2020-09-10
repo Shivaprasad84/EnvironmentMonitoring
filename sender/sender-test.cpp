@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-TEST_CASE("Test Sender") {
+TEST_CASE("Test Sender", "[vector]") {
     vector<string> param_vector;
     ifstream myfile;
     myfile.open("../TestData/temperature-humidity.csv");
