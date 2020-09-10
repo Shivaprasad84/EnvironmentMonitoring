@@ -1,0 +1,42 @@
+generate csv --> 
+    random temp and humidity data
+
+sender --> 
+
+    1) Read CSV (parse and store) --> SOLID
+    2) stdout write temperature and humidity values
+    3) threading ('N' seconds callback) or sleep(seconds); ?
+    4) trigger --> run
+    5) depends on csv or any other data files --> SOLID
+    6) Stopping mechanism
+    7) Error handling
+
+receiver --> 
+
+    1) stdin read data
+    2) Process data --> SOLID // Constraints --> S --> class, module, function --> one reason to change
+        Base class: Params
+        a) Temperature b) Humidity  
+    3) Alert (Warning and Error) LOGGING (LOG LEVELS --> Info Warning Error)
+    4) threading (if no data is received for 'N' seconds alert): polling for data or interrupt driven
+    5) Stopping mechanism
+    6) Error handling
+
+run --> 
+
+    sender.exe | receiver.exe
+    or
+    sender.exe --> periodic display of data on stdout (terminal)
+    or
+    receiver.exe --> poll for data --> "INFO: Polling..." ALL Ok
+
+receiver constraint violation format -->
+
+    ALERT:
+
+    Warning: temperature greater/lesser than "temp_value" (4 <= temp <= 37)
+    Error: temperature greater/lesser than "temp_value" (4 <= temp <= 37)
+
+testing --> 
+
+    1) 
