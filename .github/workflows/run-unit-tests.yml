@@ -18,7 +18,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cppcheck
     
     - name: static analysis (sender)
-      run: cppcheck --enable=all --error-exitcode=1 --suppress='*:includes*' ./sender/*
+      run: cppcheck --std=c++11 --enable=all --error-exitcode=1 --suppress='*:includes*' ./sender/*
       
     - name: build sender
       run: g++ -Wall -Wextra -Werror --coverage -o sender/testchecker sender/*.cpp
@@ -33,7 +33,7 @@ jobs:
       run: rm *.gcno
 
     - name: static analysis (receiver)
-      run: cppcheck --enable=all --error-exitcode=1 --suppress='*:includes*' ./receiver/* 
+      run: cppcheck --std=c++11 --enable=all --error-exitcode=1 --suppress='*:includes*' ./receiver/* 
 
     - name: build receiver
       run: g++ -Wall -Wextra -Werror --coverage -o receiver/testchecker receiver/*.cpp
