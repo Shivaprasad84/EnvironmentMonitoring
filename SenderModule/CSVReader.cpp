@@ -5,13 +5,13 @@
 
 CSVReader::CSVReader(const std::string& filepath):filepath(filepath) 
 {
+    readFromFile.exceptions( std::ifstream::failbit | std::ifstream::badbit );
     try
     {
         readFromFile.open(filepath, std::ios::in);
     }
-    catch(...)
+    catch(const std::exception& e)
     {
-        closeFileIfOpen(readFromFile);
         throw "FileNotFoundError: " + filepath + " does not exist or file empty";
     }
     
