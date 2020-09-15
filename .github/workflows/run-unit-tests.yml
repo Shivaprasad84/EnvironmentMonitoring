@@ -18,7 +18,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cppcheck
     
     - name: static analysis (SenderModule)
-      run: cppcheck --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress='*:Lib*' SenderModule/*.cpp
+      run: cppcheck --enable=all --error-exitcode=1 --suppress=missingIncludeSystem SenderModule/*.cpp
       
     - name: build CSVReader
       run: g++ -Wall -Wextra -Werror --coverage -o SenderModule/testchecker SenderModule/CSVReader_test.cpp SenderModule/CSVReader.cpp SenderModule/main_test.cpp
