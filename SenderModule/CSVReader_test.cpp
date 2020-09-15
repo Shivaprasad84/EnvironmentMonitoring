@@ -1,4 +1,4 @@
-#include "../Lib/catch.hpp"
+#include "../Lib/catch/catch.hpp"
 #include "CSVReader.hpp"
 #include <fstream>
 #include <string>
