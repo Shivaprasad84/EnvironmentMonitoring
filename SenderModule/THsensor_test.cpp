@@ -73,12 +73,10 @@ TEST_CASE("When data has empty lines and special chars, then NaN is returned")
     std::string filepath = "sender_testdata/THdata2.csv";
     CSVReader* reader = new CSVReader(filepath);
     TemperatureHumiditySensorData th_SensorData; 
-    int index = 0;
     while(reader->good())
     {
         TemperatureHumiditySensorData sd = GetSensorData(reader, th_SensorData);
         REQUIRE(std::isnan(sd.temperature));
         REQUIRE(std::isnan(sd.humidity));
-        index++;
     }
 }
