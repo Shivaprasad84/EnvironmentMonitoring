@@ -11,8 +11,8 @@ CSVReader::CSVReader(const std::string& filepath):filepath(filepath)
     }
     catch(...)
     {
-        throw "FileNotFoundError: " + filepath + " does not exist or file empty";
         closeFileIfOpen(readFromFile);
+        throw "FileNotFoundError: " + filepath + " does not exist or file empty";
     }
     
 }
