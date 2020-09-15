@@ -5,7 +5,7 @@
 
 TEST_CASE("ALL Rows of CSV file is read")
 {
-    int row_count = 13;
+    int row_count = 12;
     int current_row_count = 0;
     std::string CSVReaderFilePath = "sender_testdata/temperature-humidity.csv";
     CSVReader reader(CSVReaderFilePath);
@@ -57,12 +57,4 @@ TEST_CASE("When Two CSV files contains Unequal data Assert Unequility for all ro
 
         REQUIRE(reader_fetch != current_expected_line);
     }
-}
-
-
-TEST_CASE("Throws Exception if file not available")
-{
-    std::string filepath = "sender_testdata/temp-humidity.csv";
-    std::string expected_message = "FileNotFoundError: " + filepath + " does not exist or file empty";
-    REQUIRE_THROWS_WITH(CSVReader(filepath), expected_message); 
 }
