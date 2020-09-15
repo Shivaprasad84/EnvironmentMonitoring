@@ -1,45 +1,31 @@
-# name: Build and Run Unit Tests
+name: Build and Run Unit Tests
 
-# on:
-#   pull_request:
-#   push:
-#     branches: [ master ]
-#     paths-ignore: [ docs/*, includes ]
+on:
+  pull_request:
+  push:
+    branches: [ master ]
+    paths-ignore: [ docs/* ]
 
-# jobs:
-#   build:
+jobs:
+  build:
 
-#     runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-#     steps:
-#     - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v2
     
-#     - name: install cppcheck static analysis
-#       run: sudo apt-get update && sudo apt-get install -y cppcheck
+    - name: install cppcheck static analysis
+      run: sudo apt-get update && sudo apt-get install -y cppcheck
     
-    # - name: static analysis (sender)
-    #   run: cppcheck --enable=all --error-exitcode=1 --suppress='*:includes*' ./sender/*.cpp
+    - name: static analysis (SenderModule)
+      run: cppcheck --enable=all --error-exitcode=1 --suppress='*:Lib/catch.hpp*' SenderModule/*.cpp
       
-    # - name: build sender
-    #   run: g++ -Wall -Wextra -Werror --coverage -o testchecker sender/*.cpp
+    - name: build CSVReader
+      run: g++ -Wall -Wextra -Werror --coverage -o SenderModule/testchecker SenderModule/CSVReader_test.cpp SenderModule/CSVReader.cpp SenderModule/main_test.cpp
       
-    # - name: run sender
-    #   run: ./testchecker
+    - name: test CSVReader
+      run: SenderModule/testchecker
     
-    # - name: sender coverage report
-    #   run: gcov -r *.cpp
-    
-    # - name: clean sender .gcno files
-    #   run: rm *.gcno
-
-    # - name: static analysis (receiver)
-    #   run: cppcheck --std=c++11 --enable=all --error-exitcode=1 --suppress='*:includes*' ./receiver/*.cpp 
-
-    # - name: build receiver
-    #   run: g++ -Wall -Wextra -Werror --coverage -o testchecker receiver/*.cpp
-      
-    # - name: run receiver
-    #   run: ./testchecker
-    
-    # - name: receiver coverage report
-    #   run: gcov -r *.cpp
+    - name: CSVReader test coverage report
+      run: gcov -r SenderModule/*.cpp
+  
