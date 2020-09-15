@@ -5,7 +5,7 @@
 
 CSVReader::CSVReader(const std::string& filepath):filepath(filepath) 
 {
-    readFromFile.exceptions( std::ifstream::failbit );
+    readFromFile.exceptions(std::ifstream::badbit);
     try
     {
         readFromFile.open(filepath, std::ios::in);
