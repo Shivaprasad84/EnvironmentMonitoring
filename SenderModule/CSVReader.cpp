@@ -5,13 +5,11 @@
 
 CSVReader::CSVReader(const std::string& filepath):filepath(filepath) 
 {
-    
-    readFromFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
     try
     {
         readFromFile.open(filepath, std::ios::in);
     }
-    catch(const std::exception& e)
+    catch(...)
     {
         throw "FileNotFoundError: " + filepath + " does not exist or file empty";
         closeFileIfOpen(readFromFile);
@@ -35,8 +33,9 @@ bool CSVReader::good()
 std::string CSVReader::fetch_current_row()
 {
     std::string current_data;
-    if(std::getline(readFromFile, current_data).good())
+    if(readFromFile.good())
     {
+        std::getline(readFromFile, current_data);
         return current_data;
     }
     return "";

@@ -4,7 +4,7 @@
 #include "SenderModule/CSVReader.hpp"
 #include "SenderModule/Timer.hpp"
 #include "Lib/DataProcessingUtility.hpp"
-#define SENDER_LATENCY 2
+#define SENDER_LATENCY 0
 
 struct TemperatureHumiditySensorData
 {
