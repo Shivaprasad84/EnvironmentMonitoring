@@ -3,20 +3,6 @@
 #include <fstream>
 #include <string>
 
-TEST_CASE("ALL Rows of CSV file is read")
-{
-    int row_count = 12;
-    int current_row_count = 0;
-    std::string CSVReaderFilePath = "sender_testdata/temperature-humidity.csv";
-    CSVReader reader(CSVReaderFilePath);
-    while(reader.good())
-    {
-        reader.fetch_current_row();
-        current_row_count++;
-    }
-    REQUIRE(current_row_count == row_count);
-}   
-
 TEST_CASE("When Two CSV files contains same data Assert Equality for all rows")
 {
     std::string CSVReaderFilePath = "sender_testdata/temperature-humidity.csv";
