@@ -1,23 +1,26 @@
-# name: Main Workflow
+name: Main Workflow
 
-# on:
-#   pull_request:
-#   push:
-#     branches: [ master ]
-#     paths-ignore: [ docs/*, includes ]
+on:
+  pull_request:
+  push:
+    branches: [ master ]
+    paths-ignore: [ docs/*, Lib/catch.hpp ]
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-#     steps:
-#     - uses: actions/checkout@v2
+    steps:
+    - uses: actions/checkout@v2
 
-#     - name: build sender
-#       run: g++ -Wall -Wextra -Werror -o sender-executable sender.cpp sender/sender.cpp
+    - name: build sender
+      run: g++ -Wall -Wextra -Werror -o sender-executable sender.cpp SenderModule/CSVReader.cpp SenderModule/Timer.cpp Lib/DataProcessingUtility.cpp
     
-#     - name: build receiver
-#       run: g++ -Wall -Wextra -Werror -o receiver-executable receiver.cpp receiver/receiver.cpp
+    - name: run sender-executable
+    - run: ./sender-executable
     
-#     - name: run sensor emulator
-#       run: ./sender-executable | ./receiver-executable
+    # - name: build receiver
+    #   run: g++ -Wall -Wextra -Werror -o receiver-executable receiver.cpp receiver/receiver.cpp
+    
+    # - name: run sensor emulator
+    #   run: ./sender-executable | ./receiver-executable
