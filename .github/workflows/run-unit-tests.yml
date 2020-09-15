@@ -1,21 +1,21 @@
-name: Build and Run Unit Tests
+# name: Build and Run Unit Tests
 
-on:
-  pull_request:
-  push:
-    branches: [ master ]
-    paths-ignore: [ docs/*, includes ]
+# on:
+#   pull_request:
+#   push:
+#     branches: [ master ]
+#     paths-ignore: [ docs/*, includes ]
 
-jobs:
-  build:
+# jobs:
+#   build:
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
+#     steps:
+#     - uses: actions/checkout@v2
     
-    - name: install cppcheck static analysis
-      run: sudo apt-get update && sudo apt-get install -y cppcheck
+#     - name: install cppcheck static analysis
+#       run: sudo apt-get update && sudo apt-get install -y cppcheck
     
     # - name: static analysis (sender)
     #   run: cppcheck --enable=all --error-exitcode=1 --suppress='*:includes*' ./sender/*.cpp
@@ -32,14 +32,14 @@ jobs:
     # - name: clean sender .gcno files
     #   run: rm *.gcno
 
-    - name: static analysis (receiver)
-      run: cppcheck --std=c++11 --enable=all --error-exitcode=1 --suppress='*:includes*' ./receiver/*.cpp 
+    # - name: static analysis (receiver)
+    #   run: cppcheck --std=c++11 --enable=all --error-exitcode=1 --suppress='*:includes*' ./receiver/*.cpp 
 
-    - name: build receiver
-      run: g++ -Wall -Wextra -Werror --coverage -o testchecker receiver/*.cpp
+    # - name: build receiver
+    #   run: g++ -Wall -Wextra -Werror --coverage -o testchecker receiver/*.cpp
       
-    - name: run receiver
-      run: ./testchecker
+    # - name: run receiver
+    #   run: ./testchecker
     
-    - name: receiver coverage report
-      run: gcov -r *.cpp
+    # - name: receiver coverage report
+    #   run: gcov -r *.cpp
