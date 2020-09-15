@@ -24,7 +24,7 @@ jobs:
       run: g++ -Wall -Wextra -Werror --coverage -o testchecker SenderModule/CSVReader_test.cpp SenderModule/CSVReader.cpp SenderModule/main_test.cpp
       
     - name: test CSVReader
-      run: /testchecker
+      run: ./testchecker
     
     - name: CSVReader test coverage report
       run: gcov -r SenderModule/CSVReader_test.cpp SenderModule/CSVReader.cpp
