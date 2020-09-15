@@ -44,10 +44,3 @@ TEST_CASE("When Two CSV files contains Unequal data Assert Unequility for all ro
         REQUIRE(reader_fetch != current_expected_line);
     }
 }
-
-TEST_CASE("When filepath does not exist, then throw file not found exception")
-{
-    std::string filepath = "data.csv";
-    std::string expected_message = "FileNotFoundError: " + filepath + " does not exist or file empty";
-    REQUIRE_THROWS_WITH(CSVReader(filepath), expected_message);
-}
