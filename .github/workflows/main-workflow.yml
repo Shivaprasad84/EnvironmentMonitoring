@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches: [ master ]
-    paths-ignore: [ docs/*, Lib/catch.hpp ]
+    paths-ignore: [ docs/* ]
 
 jobs:
   build:
@@ -18,9 +18,3 @@ jobs:
     
     - name: run sender-executable
     - run: ./sender-executable
-    
-    # - name: build receiver
-    #   run: g++ -Wall -Wextra -Werror -o receiver-executable receiver.cpp receiver/receiver.cpp
-    
-    # - name: run sensor emulator
-    #   run: ./sender-executable | ./receiver-executable
