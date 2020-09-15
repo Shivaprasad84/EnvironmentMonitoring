@@ -17,4 +17,4 @@ jobs:
       run: g++ -Wall -Wextra -Werror -o sender-executable sender.cpp SenderModule/CSVReader.cpp SenderModule/Timer.cpp Lib/DataProcessingUtility.cpp
     
     - name: run sender-executable
-    - run: ./sender-executable
+      run: ./sender-executable
