@@ -21,11 +21,11 @@ jobs:
     #   run: cppcheck -q --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress='*:Lib/catch*' SenderModule/CSVReader_test.cpp SenderModule/CSVReader.cpp SenderModule/Timer.cpp 
     
     - name: build CSVReader
-      run: g++ -Wall -Wextra -Werror --coverage -o SenderModule/testchecker SenderModule/CSVReader_test.cpp SenderModule/CSVReader.cpp SenderModule/main_test.cpp
+      run: g++ -Wall -Wextra -Werror --coverage -o testchecker SenderModule/CSVReader_test.cpp SenderModule/CSVReader.cpp SenderModule/main_test.cpp
       
     - name: test CSVReader
-      run: SenderModule/testchecker
+      run: /testchecker
     
     - name: CSVReader test coverage report
-      run: gcov -r SenderModule/*.cpp
+      run: gcov -r SenderModule/CSVReader_test.cpp SenderModule/CSVReader.cpp
   
