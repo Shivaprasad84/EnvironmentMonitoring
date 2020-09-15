@@ -39,6 +39,7 @@ std::string CSVReader::fetch_current_row()
     {
         return current_data;
     }
+    return "";
 }
 
 CSVReader::~CSVReader()
